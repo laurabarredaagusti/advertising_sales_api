@@ -46,4 +46,5 @@ def ingest_data():
         crsr = connection.cursor()
         query = 'INSERT INTO sales (TV, radio, newspaper, sales) VALUES (' + tv + ', ' + radio + ', ' + newspaper + ', ' + sales +')'
         crsr.execute(query)
+        connection.commit()
         return "The data has been added to the database"
