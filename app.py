@@ -31,7 +31,7 @@ def predict():
 
 
 # 2. Crea un endpoint para almacenar nuevos registros en la base de datos que deberá estar previamente creada
-@app.route('/ingest_data', methods=['POST'])
+@app.route('/ingest_data', methods=['PUT'])
 def ingest_data():
     tv = request.args.get('tv', None)
     radio = request.args.get('radio', None)
