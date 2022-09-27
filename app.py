@@ -53,7 +53,7 @@ def ingest_data():
 
 
 # 3. Reentrenar y guardar el modelo con los datos disponibles en la carpeta data
-@app.route('/retrain', methods=['PUT'])
+@app.route('/retrain', methods=['GET'])
 def retrain():
     df = pd.read_csv('data/new_data_advertising.db', index_col=0)
     X = df.drop(columns=['sales'])
