@@ -33,12 +33,17 @@ def predict():
 # 2. Crea un endpoint para almacenar nuevos registros en la base de datos que deberá estar previamente creada
 @app.route('/ingest_data', methods=['GET'])
 def ingest_data():
+
     tv = request.args.get('tv', None)
     radio = request.args.get('radio', None)
     newspaper = request.args.get('newspaper', None)
     sales = request.args.get('sales', None)
 
-    connection = sqlite3.connect("data/advertising.db")
-    crsr = connection.cursor()
-    query = 'INSERT INTO sales (TV, radio, newspaper, sales) VALUES (' + tv + ', ' + radio + ', ' + newspaper + ', ' + sales +')'
-    crsr.execute(query)
+    if tv is None or radio is None or newspaper is None or sales is None:
+        return "Missing args, the input values are needed to insert data"
+    else:
+        connection = sqlite3.connect("data/advertising.db")
+        crsr = connection.cursor()
+        query = 'INSERT INTO sales (TV, radio, newspaper, sales) VALUES (' + tv + ', ' + radio + ', ' + newspaper + ', ' + sales +')'
+        crsr.execute(query)
+        return "The data has been added to the database"
