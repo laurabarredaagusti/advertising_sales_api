@@ -38,7 +38,7 @@ def ingest_data():
     newspaper = request.args.get('newspaper', None)
     sales = request.args.get('sales', None)
 
-    connection = sqlite3.connect("books.db")
+    connection = sqlite3.connect("advertising.db")
     crsr = connection.cursor()
     query = 'INSERT INTO sales (TV, radio, newspaper, sales) VALUES (' + tv + ', ' + radio + ', ' + newspaper + ', ' + sales +')'
     crsr.execute(query)
