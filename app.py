@@ -42,9 +42,9 @@ def ingest_data():
     if tv is None or radio is None or newspaper is None or sales is None:
         return "Missing args, the input values are needed to insert data"
     else:
-        connection = sqlite3.connect("data/advertising.db")
-        crsr = connection.cursor()
+        conn = sqlite3.connect("data/advertising.db")
+        cur = conn.cursor()
         query = 'INSERT INTO sales (TV, radio, newspaper, sales) VALUES (' + tv + ', ' + radio + ', ' + newspaper + ', ' + sales +')'
-        crsr.execute(query)
-        connection.commit()
+        cur.execute(query)
+        conn.commit()
         return "The data has been added to the database"
