@@ -26,4 +26,4 @@ def predict():
         return "Missing args, the input values are needed to predict"
     else:
         prediction = model.predict([[tv,radio,newspaper]])
-        return "The prediction of sales investing that amount of money in TV, radio and newspaper is: " + str(round(prediction[0],2)) + 'k €'
+        return "The prediction of sales investing that amount of money in TV, radio and newspaper is: " + str(round(prediction[0],2)) + '€'
