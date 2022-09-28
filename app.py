@@ -55,7 +55,7 @@ def ingest_data():
 # 3. Reentrenar y guardar el modelo con los datos disponibles en la carpeta data
 @app.route('/retrain', methods=['GET'])
 def retrain():
-    connection = sqlite3.connect("data/new_data_advertising.db")
+    connection = sqlite3.connect("data/data_advertising.db")
     crsr = connection.cursor()
     query = 'SELECT * FROM sales'
     crsr.execute(query)
