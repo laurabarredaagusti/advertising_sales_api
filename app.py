@@ -3,6 +3,7 @@ import os
 import pickle
 import pandas as pd
 import sqlite3
+import datetime
 
 
 os.chdir(os.path.dirname(__file__))
@@ -69,9 +70,16 @@ def retrain():
 
     model = pickle.load(open('data/advertising_model','rb'))
     model.fit(X,y)
-    pickle.dump(model, open('data/advertising_model_v1','wb'))
 
-    return "New model retrained and saved as advertising_model_v1"
+    date = str(datetime.today().strftime('%y%m%d%H%M%S'))
+    name = 'advertising_model' + date
+    path = 'data/' + name
+    pickle.dump(model, open(path,'wb'))
+
+    result = "New model retrained and saved as " + name
+
+    return result
+
 
 # 4 Comprobar función
 
