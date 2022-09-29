@@ -76,7 +76,9 @@ def retrain():
     path = 'data/' + name
     pickle.dump(model, open(path,'wb'))
 
-    return "New model retrained and saved as advertising_model_v1"
+    result = "New model retrained and saved as " + name
+
+    return result
 
 
 # 4 Comprobar función
