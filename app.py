@@ -43,7 +43,7 @@ def ingest_data():
         
         return "Missing args, the input values are needed to insert data"
     else:
-        conn = sqlite3.connect("data/new_data_advertising.db")
+        conn = sqlite3.connect("data/advertising.db")
         cur = conn.cursor()
         query = 'INSERT INTO sales (TV, radio, newspaper, sales) VALUES (' + tv + ', ' + radio + ', ' + newspaper + ', ' + sales +')'
         cur.execute(query)
@@ -55,7 +55,7 @@ def ingest_data():
 # 3. Reentrenar y guardar el modelo con los datos disponibles en la carpeta data
 @app.route('/retrain', methods=['GET'])
 def retrain():
-    connection = sqlite3.connect("data/data_advertising.db")
+    connection = sqlite3.connect("data/advertising.db")
     crsr = connection.cursor()
     query = 'SELECT * FROM sales'
     crsr.execute(query)
