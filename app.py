@@ -72,3 +72,20 @@ def retrain():
     pickle.dump(model, open('data/advertising_model_v1','wb'))
 
     return "New model retrained and saved as advertising_model_v1"
+
+# 4 Comprobar función
+
+@app.route('/print_db', methods=['GET'])
+def print_db():
+
+    connection = sqlite3.connect('data/advertising.db')
+    cursor = connection.cursor()
+
+    query = '''
+    SELECT * FROM datos
+    '''
+
+    result = cursor.execute(query).fetchall()
+    connection.commit()
+
+    return jsonify(result)
