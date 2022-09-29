@@ -82,7 +82,7 @@ def print_db():
     cursor = connection.cursor()
 
     query = '''
-    SELECT * FROM datos
+    SELECT * FROM sales
     '''
 
     result = cursor.execute(query).fetchall()
